@@ -1,0 +1,33 @@
+<html>
+    <body>
+
+        <div class="animationContainer">
+
+            <!-- Animates itself -->
+            <div id="el1-1" data-animation-visible-class="visClass1-1">el1-1</div>
+            <div id="el1-2" data-animation-visible-class="visClass1-2" data-animation-delay="100">el1-2</div>
+
+            <!-- Animates itself and another element -->
+            <div id="el2-1" data-animation-visible-class="visClass2-1" data-animation-element-name="vis2name">el2-1</div>
+
+            <!-- Is being animated by other element; use more than 1 element to make sure we don't
+                 oversee any problems that are caused by multiple elements -->
+            <div id="el3-1" data-animation-trigger="vis2name" data-animation-visible-class="visClass3-1">el3-1</div>
+            <div id="el3-2" data-animation-trigger="vis2name" data-animation-visible-class="visClass3-2">el3-2</div>
+
+            <!-- Is being staggered (stagger needs at least 2 elements) -->
+            <div id="el4-1" data-animation-visible-class="visClass4-1">el4-1</div>
+            <div id="el4-2" data-animation-visible-class="visClass4-2" data-animation-stagger="100">el4-2</div>
+
+            <!-- Animates other element only -->
+            <div id="el5-1" data-animation-element-name="vis5name">el5-1</div>            
+
+        </div>
+
+        <!-- Elements that should not (or later) be added -->
+        <div class="outsideContainer">
+            <div id="el6-1" data-animation-visible-class="visClass6-1">el6-1</div>
+        </div>
+
+    </body>
+</html>

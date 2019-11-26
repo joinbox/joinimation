@@ -1,0 +1,4 @@
+{
+  "extends": "@joinbox/joinbox",
+  "parser": "babel-eslint"
+}

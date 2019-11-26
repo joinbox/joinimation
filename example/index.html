@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Joinimation Demo</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="css/bulma.css">
+  <link rel="stylesheet" href="css/fade-in.css">
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <section class="section">
+      <div class="columns">
+        <div class="column">
+          <div class="box faded-out" data-animation-visible-class="fade-in">
+            <figure class="image is-3by2">
+              <img src="https://picsum.photos/400/300">
+            </figure>
+            <h2 class="title is-h2" style="margin-top:1rem">Title 1</h2>
+            <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="box faded-out" data-animation-visible-class="fade-in" data-animation-stagger="100">
+            <figure class="image is-3by2">
+              <img src="https://picsum.photos/400/300">
+            </figure>
+            <h2 class="title is-h2" style="margin-top:1rem">Title 1</h2>
+            <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="box faded-out" data-animation-visible-class="fade-in" data-animation-stagger="250">
+            <figure class="image is-3by2">
+              <img src="https://picsum.photos/400/300">
+            </figure>
+            <h2 class="title is-h2" style="margin-top:1rem">Title 1</h2>
+            <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="box faded-out" data-animation-visible-class="fade-in" data-animation-stagger="600">
+            <figure class="image is-3by2">
+              <img src="https://picsum.photos/400/300">
+            </figure>
+            <h2 class="title is-h2" style="margin-top:1rem">Title 1</h2>
+            <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr/>
+
+    <section class="section">
+      <div class="columns">
+        <div class="column">
+          <div class="box faded-out" data-animation-visible-class="fade-in" data-animation-element-name="trigger">
+            <figure class="image is-3by1 faded-up" data-animation-visible-class="fade-in" data-animation-trigger="trigger">
+              <img src="https://picsum.photos/900/300">
+            </figure>
+            <h2 class="title is-h2 faded-up" style="margin-top:1.8rem" data-animation-trigger="trigger" data-animation-delay="50" data-animation-visible-class="fade-in" >
+              Title 1
+            </h2>
+            <h3 class="subtitle is-h2 faded-up" style="margin-top:2rem" data-animation-trigger="trigger" data-animation-delay="100" data-animation-visible-class="fade-in" >
+              Compatible with all icon font libraries, including Font Awesome 5
+            </h3>
+            <p class="faded-up"  data-animation-trigger="trigger" data-animation-delay="180" data-animation-visible-class="fade-in" >
+              Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            </p>
+            <p class="faded-up"  data-animation-trigger="trigger" data-animation-delay="250" data-animation-visible-class="fade-in" >
+              Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr/>
+
+    <section class="section">
+      <div class="columns">
+        <div class="column">
+          <div class="box faded-right" data-animation-visible-class="fade-in" data-animation-element-name="rightTrigger">
+            <article class="media">
+              <div class="media-left faded-right" data-animation-visible-class="fade-in" data-animation-trigger="rightTrigger">
+                <figure class="image is-256by256">
+                  <img src="https://picsum.photos/300/300">
+                </figure>
+              </div>
+              <div class="media-content">
+                <div class="content">
+                  <h2 class="title is-h2 faded-right" data-animation-visible-class="fade-in" data-animation-trigger="rightTrigger" data-animation-delay="80">
+                    Because images can take a few seconds to load</h2>
+                  <h3 class="subtitle is-h2 faded-right" data-animation-visible-class="fade-in" data-animation-trigger="rightTrigger" data-animation-delay="240">
+                    … use the image container to specify a precisely sized container so that your layout isn't
+                  </h3>
+                  <p class="faded-right" data-animation-visible-class="fade-in" data-animation-trigger="rightTrigger" data-animation-delay="480">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script type="module" src="js/fade-in.js"></script>
+
+</body>
+
+</html>
