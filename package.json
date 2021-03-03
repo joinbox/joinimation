@@ -14,7 +14,8 @@
   },
   "scripts": {
     "test": "npx ava --watch",
-    "demo": "npx parcel example/index.html"
+    "demo": "npx parcel example/index.html",
+    "build": "npx parcel build src/buildScript.js --out-dir build --out-file Joinimation.js --bundle-node-modules --detailed-report"
   },
   "author": "Felix Steiner <felix@joinbox.com>",
   "license": "ISC",

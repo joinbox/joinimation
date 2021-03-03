@@ -68,6 +68,28 @@ test('adds receivers from container', (t) => {
 });
 
 
+test('adds container itself as trigger/receiver', (t) => {
+    const { dom } = setupData();
+    const elements = new AnimationElements();
+    // Element that triggers itself (is a trigger and a receiver)
+    const triggerReceiver = dom.window.document.querySelector('#el2-1');
+    elements.addContainer(triggerReceiver);
+    // Element that triggers another element (is only a trigger)
+    const foreignTrigger = dom.window.document.querySelector('#el5-1');
+    elements.addContainer(foreignTrigger);
+
+    t.deepEqual([...elements.receivers.keys()], [
+        triggerReceiver,
+    ]);
+
+    t.deepEqual([...elements.triggers.keys()], [
+        triggerReceiver,
+        foreignTrigger,
+    ]);
+
+});
+
+
 test('returns receivers for a given element', (t) => {
 
     const { dom } = setupData();

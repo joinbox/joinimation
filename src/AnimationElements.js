@@ -28,19 +28,28 @@ export default class AnimationElements extends EventEmitter {
      */
     addContainer(container) {
 
-        // All elements that trigger animations on other elements (through their name).
-        const foreignTriggers = container.querySelectorAll(
-            `[${convertDataName(dataAttributes.elementName)}]`,
-        );
+        // All elements that trigger animations on other elements (through their name). Make sure
+        // we not only capture children but also the container itself.
+        const foreignTriggerSelector = `[${convertDataName(dataAttributes.elementName)}]`;
+        const foreignTriggers = [
+            ...container.querySelectorAll(foreignTriggerSelector),
+            ...(container.matches(foreignTriggerSelector) ? [container] : []),
+        ];
+
         // All elements that trigger themselves (i.e. that have a visibleClass but *not* a foreign
         // animation trigger).
         const selfTriggerSelector = `[${convertDataName(dataAttributes.visibleClass)}]:not([${convertDataName(dataAttributes.foreignTrigger)}])`;
-        const selfTriggers = container.querySelectorAll(selfTriggerSelector);
+        const selfTriggers = [
+            ...container.querySelectorAll(selfTriggerSelector),
+            ...(container.matches(selfTriggerSelector) ? [container] : []),
+        ];
 
         // All elements that are triggered by foreign elements
-        const foreignReceivers = container.querySelectorAll(
-            `[${convertDataName(dataAttributes.foreignTrigger)}]`,
-        );
+        const foreignReceiverSelector = `[${convertDataName(dataAttributes.foreignTrigger)}]`;
+        const foreignReceivers = [
+            ...container.querySelectorAll(foreignReceiverSelector),
+            ...(container.matches(foreignReceiverSelector) ? [container] : []),
+        ];
 
         // Create this.trigger data
         [...selfTriggers, ...foreignTriggers].forEach((trigger) => {
