@@ -1,6 +1,6 @@
 {
   "name": "@joinbox/joinimation",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Adds classes to HTML elements when they become visible",
   "main": "src/Joinimation.js",
   "ava": {
