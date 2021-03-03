@@ -60,9 +60,13 @@ Adds classes to HTML elements when they become visible (as the user scrolls thro
 
 # Build
 
+Setup: `npm i`
+
 Test: `npm test`
 
-Run demo: `npm run demo`
+Run demo:
+- Use node 12
+- `npm run demo`
 
-TODO: Run `npm run build` before committing to create dist files.
+**IMPORTANT**: Run `npm run build` before committing to create dist files.
 
