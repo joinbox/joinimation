@@ -1,6 +1,6 @@
 {
   "name": "@joinbox/joinimation",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Adds classes to HTML elements when they become visible",
   "main": "src/Joinimation.js",
   "ava": {
@@ -13,7 +13,7 @@
     ]
   },
   "scripts": {
-    "test": "npx ava --watch",
+    "test": "npx ava --watch --verbose",
     "demo": "npx parcel example/index.html",
     "build": "npx parcel build src/buildScript.js --out-dir build --out-file Joinimation.js --bundle-node-modules --detailed-report"
   },

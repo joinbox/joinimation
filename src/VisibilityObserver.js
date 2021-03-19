@@ -3,7 +3,7 @@ import EventEmitter from 'events';
 export default class VisibilityObserver extends EventEmitter {
 
     intersectionObserverOptions = {
-        threshold: [0.2],
+        threshold: [0.01, 0.05, 0.1, 0.2],
     }
 
     /**
@@ -52,6 +52,15 @@ export default class VisibilityObserver extends EventEmitter {
 
             // Only handle elements that are (partially) visible
             if (!entry.isIntersecting) return;
+
+            // For large elements use smaller threshold; if we use 0.2 for all elements, some may
+            // only appear after scrolling for a few hundert pixels.
+            const { height } = entry.boundingClientRect;
+            let matchingThreshold = 0.2;
+            if (height > 5000) matchingThreshold = 0.01;
+            else if (height > 2000) matchingThreshold = 0.05;
+            else if (height > 1000) matchingThreshold = 0.1;
+            if (entry.intersectionRatio < matchingThreshold) return;
 
             const element = entry.target;
             const { stagger } = this.elementStore.getOptionsForTrigger(element);
