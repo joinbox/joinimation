@@ -1,5 +1,5 @@
 import test from 'ava';
-import VisibilityObserver from './VisibilityObserver.js';
+import VisibilityObserver from './VisibilityObserver.mjs';
 
 const setupData = () => {
 
@@ -44,7 +44,7 @@ test('listens to elements that were emitted by addTrigger', (t) => {
 });
 
 
-test.cb('emits intersect for intersected elements', (t) => {
+test('emits intersect for intersected elements', async(t) => {
 
     const { emitter, IntersectionObserver } = setupData();
     global.IntersectionObserver = IntersectionObserver;
@@ -67,12 +67,14 @@ test.cb('emits intersect for intersected elements', (t) => {
         { unobserve: () => {} },
     );
 
-    // First stagger after 50ms
-    setTimeout(() => t.deepEqual(intersectedElements, ['el1']), 60);
-    setTimeout(() => {
-        t.deepEqual(intersectedElements, ['el1', 'el2']);
-        t.end();
-    }, 120);
+    await new Promise((resolve) => {
+        // First stagger after 50ms
+        setTimeout(() => t.deepEqual(intersectedElements, ['el1']), 60);
+        setTimeout(() => {
+            t.deepEqual(intersectedElements, ['el1', 'el2']);
+            resolve();
+        }, 120);
+    })
 
     delete global.IntersectionObserver;
 });

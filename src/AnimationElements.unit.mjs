@@ -1,11 +1,12 @@
 import test from 'ava';
-import { join } from 'path';
+import { join, dirname } from 'path';
 import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
 import { JSDOM } from 'jsdom';
-import AnimationElements from './AnimationElements.js';
+import AnimationElements from './AnimationElements.mjs';
 
 const setupData = () => {
-    const filePath = join(__dirname, '/testData/testDom.html');
+    const filePath = join(dirname(fileURLToPath(import.meta.url)), '/testData/testDom.html');
     const fileContent = readFileSync(filePath);
     const dom = new JSDOM(fileContent);
     return { dom };

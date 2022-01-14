@@ -1,6 +1,6 @@
 import EventEmitter from 'events';
-import convertDataName from './convertDataName.js';
-import dataAttributes from './dataAttributes.js';
+import convertDataName from './convertDataName.mjs';
+import dataAttributes from './dataAttributes.mjs';
 
 export default class AnimationElements extends EventEmitter {
 

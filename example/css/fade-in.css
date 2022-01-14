@@ -22,3 +22,7 @@
     transform: translate3d(0, 0, 0);
 }
 
+/* Add some background color while the is-transitioning class is set to make it visible */
+.is-transitioning {
+    background-color: darksalmon;
+}
