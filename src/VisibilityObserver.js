@@ -34,6 +34,7 @@ export default class VisibilityObserver extends EventEmitter {
      * Sets up IntersectionObserver
      */
     setupIntersectionObserver() {
+        /* global IntersectionObserver */
         this.intersectionObserver = new IntersectionObserver(
             this.handleIntersection.bind(this),
             this.intersectionObserverOptions,

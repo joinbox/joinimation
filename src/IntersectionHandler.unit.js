@@ -1,5 +1,4 @@
 import test from 'ava';
-import IntersectionHandler from './IntersectionHandler.js';
 
 const setupData = () => {
 
@@ -12,12 +11,12 @@ const setupData = () => {
                 visibleClass: 'className',
                 element: {
                     classList: {
-                        add: className => this.className = className,
+                        add: (className) => { this.className = className; },
                     },
                 },
             }];
         }
-    };
+    }
     const listeners = [];
     const intersectEmitter = {
         on: (name, fn) => listeners.push(fn),
@@ -26,12 +25,11 @@ const setupData = () => {
 
     return { requestAnimationFrame, ElementStore, intersectEmitter };
 
-}
+};
 
 test.cb('handles intersection', (t) => {
     const { requestAnimationFrame, ElementStore, intersectEmitter } = setupData();
     const elementStore = new ElementStore();
-    const handler = new IntersectionHandler(elementStore, intersectEmitter);
     global.requestAnimationFrame = requestAnimationFrame;
 
     intersectEmitter.emit('testElement');
@@ -42,7 +40,7 @@ test.cb('handles intersection', (t) => {
     // classList is only updated after delay
     t.is(elementStore.className, undefined);
     setTimeout(() => {
-        t.is(elementStore.className, 'className')
+        t.is(elementStore.className, 'className');
         t.end();
     }, 70);
 

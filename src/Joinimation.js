@@ -12,7 +12,7 @@ export default class Joinimation {
         this.visibilityObserver = new VisibilityObserver(this.animationElements);
         this.intersectionHandler = new IntersectionHandler(
             this.animationElements,
-            this.visibilityObserver
+            this.visibilityObserver,
         );
     }
 

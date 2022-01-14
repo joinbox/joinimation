@@ -35,6 +35,7 @@ export default class IntersectionHandler {
      */
     updateDom({ element, delay, visibleClass }) {
         setTimeout(() => {
+            /* global requestAnimationFrame */
             requestAnimationFrame(() => element.classList.add(visibleClass));
         }, delay);
     }
