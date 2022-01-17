@@ -78,7 +78,8 @@ test('adds class during transition', async(t) => {
     t.deepEqual(elementStore.classNames, []);
     await new Promise((resolve) => {
         setTimeout(() => {
-            t.deepEqual(elementStore.classNames, ['className', 'isTransitioning']);
+            // Order of classNames matters
+            t.deepEqual(elementStore.classNames, ['isTransitioning', 'className']);
             global.requestAnimationFrame = originalRAF;
             resolve();
         }, 70);

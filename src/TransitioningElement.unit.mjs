@@ -44,6 +44,7 @@ test('removes class after transitions end', (t) => {
     // Get all eventListeners for transitionstart and transitionend
     const start = element.eventListeners.filter(item => item.name === 'transitionstart');
     const end = element.eventListeners.filter(item => item.name === 'transitionend');
+    const cancel = element.eventListeners.filter(item => item.name === 'transitioncancel');
 
     // Check if event listeners were registered correctly
     t.is(start.length, 1);
@@ -54,7 +55,8 @@ test('removes class after transitions end', (t) => {
     start[0].fn();
     end[0].fn();
     start[0].fn();
-    end[0].fn();
+    // Test a transitioncancel event
+    cancel[0].fn();
     // One transition is still running
     t.is(element.classList.classNames.includes('is-transitioning'), true);
     end[0].fn();
