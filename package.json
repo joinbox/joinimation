@@ -2,7 +2,7 @@
   "name": "@joinbox/joinimation",
   "version": "1.0.1",
   "description": "Adds classes to HTML elements when they become visible",
-  "main": "src/Joinimation.js",
+  "main": "src/Joinimation.mjs",
   "ava": {
     "files": [
       "**/*.unit.mjs",
