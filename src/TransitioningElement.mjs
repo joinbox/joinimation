@@ -27,6 +27,7 @@ export default class {
         this.boundHandleTransitionEnd = this.handleTransitionEnd.bind(this);
         this.element.addEventListener('transitionstart', this.boundHandleTransitionStart);
         this.element.addEventListener('transitionend', this.boundHandleTransitionEnd);
+        this.element.addEventListener('transitioncancel', this.boundHandleTransitionEnd);
     }
 
     handleTransitionStart() {
@@ -39,6 +40,9 @@ export default class {
             this.updateClass(false);
             this.element.removeEventListener('transitionstart', this.boundHandleTransitionStart);
             this.element.removeEventListener('transitionend', this.boundHandleTransitionEnd);
+            // Transitions that are started (via transitionstart) can be eded through transitionend
+            // or transitioncancel (if a new transition happens, e.g. by hovering an element)
+            this.element.removeEventListener('transitioncancel', this.boundHandleTransitionEnd);
         }
     }
 
