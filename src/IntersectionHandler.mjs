@@ -48,7 +48,6 @@ export default class IntersectionHandler {
         setTimeout(() => {
             /* global requestAnimationFrame */
             requestAnimationFrame(() => {
-                element.classList.add(visibleClass);
                 if (this.isTransitioningClassName) {
                     const transitioningElement = new TransitioningElement({
                         element,
@@ -56,6 +55,12 @@ export default class IntersectionHandler {
                     });
                     transitioningElement.init();
                 }
+                // We must make sure that the isTransitioningClass is added *before* the visible
+                // class as it usually controls the transition properties (delay, duration, easing)
+                // and therefore must be set *before* the class executing the transition is added.
+                requestAnimationFrame(() => {
+                    element.classList.add(visibleClass);
+                });
             });
         }, delay);
     }
