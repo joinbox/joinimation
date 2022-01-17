@@ -1,19 +1,20 @@
-import VisibilityObserver from './VisibilityObserver.js';
-import IntersectionHandler from './IntersectionHandler.js';
-import AnimationElements from './AnimationElements.js';
+import VisibilityObserver from './VisibilityObserver.mjs';
+import IntersectionHandler from './IntersectionHandler.mjs';
+import AnimationElements from './AnimationElements.mjs';
 
 /**
  * Adds a class to an element as soon as it becomes visible
  */
 export default class Joinimation {
 
-    constructor() {
+    constructor({ isTransitioningClassName } = {}) {
         this.animationElements = new AnimationElements();
         this.visibilityObserver = new VisibilityObserver(this.animationElements);
-        this.intersectionHandler = new IntersectionHandler(
-            this.animationElements,
-            this.visibilityObserver
-        );
+        this.intersectionHandler = new IntersectionHandler({
+            elementStore: this.animationElements,
+            intersectEmitter: this.visibilityObserver,
+            isTransitioningClassName,
+        });
     }
 
     /**

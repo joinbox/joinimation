@@ -39,7 +39,7 @@ Adds classes to HTML elements when they become visible (as the user scrolls thro
     ````
 
 2. Add the following attributes to all HTML elements that should get classes when they (or another
-   specified element) becomes visible:
+   specified element) become visible:
 
     - An element with the attribute `data-animation-visible-class="className"` gets the 
       orresponding class (`className` in this case) as soon as it becomes visible.
@@ -52,11 +52,23 @@ Adds classes to HTML elements when they become visible (as the user scrolls thro
       take place in the same order as the elements have in the DOM. The delay is relative to the 
       previous elements that became visible simultaneously: If element1 has a stagger of 200 ms and
       element2 has a stagger of 300 ms, element2 will only become visible 500 ms after it
-      became visible.
+      became visible. What are staggers good for? Mainly to have elements fade in one after another
+      on large screens (where they are aligned horizontally) but not on small screens (where
+      they are aligned vertically).
     - If an element with a `data-animation-visible-class` attribute **also** has an attribute 
       `data-animation-trigger="name1"`, classes will be added as soon as an other element that
       has the attribute `data-animation-element-name="name1"` becomes visible. Make sure their
-      attribute values match exactly.
+      delay the animation of an element depending on the visibility of another element.
+      attribute values match exactly. Can be used in combination with `data-animation-delay` to
+
+3. If you need different transition settings (duration, timing function, delay) at the time when
+elements become visible (than e.g. when they are hovered later), initialize Joinimation with
+a class name that will only be added to the Joinimation elements while its initial transitions are 
+running:
+```javascript
+    const joinimation = new Joinimation({ isTransitioningClassName: 'isTransitioning' });
+```
+
 
 # Build
 
@@ -65,8 +77,5 @@ Setup: `npm i`
 Test: `npm test`
 
 Run demo:
-- Use node 12
+- Use node 16
 - `npm run demo`
-
-**IMPORTANT**: Run `npm run build` before committing to create dist files.
-

@@ -5,8 +5,8 @@
   "main": "src/Joinimation.js",
   "ava": {
     "files": [
-      "**/*.unit.js",
-      "**/*.integration.js"
+      "**/*.unit.mjs",
+      "**/*.integration.mjs"
     ],
     "require": [
       "esm"
@@ -14,25 +14,24 @@
   },
   "scripts": {
     "test": "npx ava --watch --verbose",
-    "demo": "npx parcel example/index.html",
-    "build": "npx parcel build src/buildScript.js --out-dir build --out-file Joinimation.js --bundle-node-modules --detailed-report"
+    "demo": "npx parcel example/index.html"
   },
   "author": "Felix Steiner <felix@joinbox.com>",
   "license": "ISC",
   "devDependencies": {
-    "@joinbox/eslint-config-joinbox": "^1.0.8",
-    "ava": "^2.4.0",
+    "@joinbox/eslint-config-joinbox": "^1.0.10",
+    "ava": "^4.0.1",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.3",
     "babel-plugin-syntax-class-properties": "^6.13.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "esm": "^3.2.25",
-    "jsdom": "^15.2.1",
-    "parcel": "^1.12.4"
+    "jsdom": "^19.0.0",
+    "parcel": "^2.2.0"
   },
   "dependencies": {
-    "debug": "^4.1.1",
-    "events": "^3.0.0"
+    "debug": "^4.3.3",
+    "events": "^3.3.0"
   }
 }

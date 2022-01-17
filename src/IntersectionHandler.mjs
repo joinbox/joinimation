@@ -1,3 +1,5 @@
+import TransitioningElement from './TransitioningElement.mjs';
+
 /**
  * Handles intersection events and updates DOM
  */
@@ -10,10 +12,19 @@ export default class IntersectionHandler {
      * @param {VisibilityObserver} intersectEmitter  Emitter that handles intersection changes on
      *                                               elements from elementStore and fires
      *                                               'intersect' event when intersection changes
-     */
-    constructor(elementStore, intersectEmitter) {
+     * @param {string} isTransitioningClassName      Name of class that is added to an element
+     *                                               while it is transitioning; it is removed as
+     *                                               soon as all initial transitions (that are
+     *                                               started at the same time as Joinimation adds
+     *                                               the visibleClass) are done running. Needed
+     *                                               to have different timings, durations and
+     *                                               delays for initial (scroll-based) transitions
+     *                                               than for hover effects.
+    */
+    constructor({ elementStore, intersectEmitter, isTransitioningClassName } = {}) {
         this.elementStore = elementStore;
         this.intersectEmitter = intersectEmitter;
+        this.isTransitioningClassName = isTransitioningClassName;
         this.setupIntersectionHandler();
     }
 
@@ -28,14 +39,24 @@ export default class IntersectionHandler {
     }
 
     /**
-     * Updates DOM whenever an intersection change is observed. Adds class 
+     * Updates DOM whenever an intersection change is observed. Adds class
      * @param  {DOMElement} options.element    Element to add class to
      * @param  {number} options.delay          Delay after which class should be added to element
      * @param  {string} options.visibleClass   Name of the class that should be added to element
      */
     updateDom({ element, delay, visibleClass }) {
         setTimeout(() => {
-            requestAnimationFrame(() => element.classList.add(visibleClass));
+            /* global requestAnimationFrame */
+            requestAnimationFrame(() => {
+                element.classList.add(visibleClass);
+                if (this.isTransitioningClassName) {
+                    const transitioningElement = new TransitioningElement({
+                        element,
+                        isTransitioningClassName: this.isTransitioningClassName,
+                    });
+                    transitioningElement.init();
+                }
+            });
         }, delay);
     }
 

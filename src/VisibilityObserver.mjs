@@ -3,6 +3,9 @@ import EventEmitter from 'events';
 export default class VisibilityObserver extends EventEmitter {
 
     intersectionObserverOptions = {
+        // For very high elements, a threshold of 0.01 works well, while for small elements, 0.2
+        // makes much more sense. Therefore we use different thresholds and compare it to the
+        // element's height.
         threshold: [0.01, 0.05, 0.1, 0.2],
     }
 
@@ -34,6 +37,7 @@ export default class VisibilityObserver extends EventEmitter {
      * Sets up IntersectionObserver
      */
     setupIntersectionObserver() {
+        /* global IntersectionObserver */
         this.intersectionObserver = new IntersectionObserver(
             this.handleIntersection.bind(this),
             this.intersectionObserverOptions,
